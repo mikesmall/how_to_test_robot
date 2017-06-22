@@ -11,22 +11,22 @@ class TestRobot < MiniTest::Test
 
   def test_that_foreign_robot_neeing_repairs_sent_to_station_1
     # arrange
-    @robot = Robot.new
-    @robot.needs_repairs = true
-    @robot.foreign_model = true
+    johnny5 = Robot.new
+    johnny5.needs_repairs = true
+    johnny5.foreign_model = true
     # act
-    send_to_station = @robot.station
+    send_to_station = johnny5.station
     # assert
     assert_equal(send_to_station, 1)
   end
 
   def test_that_vintage_robot_needing_repairs_sent_to_station_2
     # arrange
-    @robot = Robot.new
-    @robot.needs_repairs = true
-    @robot.vintage_model = true
+    r2d2 = Robot.new
+    r2d2.needs_repairs = true
+    r2d2.vintage_model = true
     # act
-    send_to_station = @robot.station
+    send_to_station = r2d2.station
     # assert
     assert_equal(send_to_station, 2)
   end
@@ -34,10 +34,12 @@ class TestRobot < MiniTest::Test
   def test_that_standard_robot_needing_repairs_sent_to_station_3
     skip
     # arrange
-
+    c3po = Robot.new
+    c3po.needs_repairs = true
     # act
-
+    send_to_station = c3po.station
     # assert
+    assert_equal(send_to_station, 3)
   end
 
   def test_that_robot_in_good_condition_sent_to_station_4
