@@ -10,12 +10,14 @@ class TestRobot < MiniTest::Test
 # assert thing != other thing
 
   def test_that_foreign_robot_neeing_repairs_sent_to_station_1
-    skip
     # arrange
-
+    @robot = Robot.new
+    @robot.needs_repairs = true
+    @robot.foreign_model = true
     # act
-
+    send_to_station = @robot.station
     # assert
+    assert_equal(send_to_station, 1)
   end
 
   def test_that_vintage_robot_needing_repairs_sent_to_station_2
@@ -70,7 +72,7 @@ class TestRobot < MiniTest::Test
     # arrange
     @robot = Robot.new
     # act
-    @robot.day_off = "Monday"
+    @robot.day_off == "Monday"
     # assert
     assert @robot.workday?("Monday")
   end
@@ -79,7 +81,7 @@ class TestRobot < MiniTest::Test
     # arrange
     @robot = Robot.new
     # act
-    @robot.day_off = 2 # indicating Monday (day 2/7)
+    @robot.day_off == 2 # indicating Monday (day 2/7)
     # assert
     assert @robot.workday?(2)
   end
