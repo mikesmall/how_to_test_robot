@@ -32,7 +32,6 @@ class TestRobot < MiniTest::Test
   end
 
   def test_that_standard_robot_needing_repairs_sent_to_station_3
-    skip
     # arrange
     c3po = Robot.new
     c3po.needs_repairs = true
@@ -43,7 +42,6 @@ class TestRobot < MiniTest::Test
   end
 
   def test_that_robot_in_good_condition_sent_to_station_4
-    skip
     # arrange
     bb8 = Robot.new
     bb8.needs_repairs = false
@@ -76,20 +74,20 @@ class TestRobot < MiniTest::Test
 
   def test_workday_on_day_off_returns_true
     # arrange
-    @robot = Robot.new
+    johnny5 = Robot.new
     # act
-    @robot.day_off == "Monday"
+    johnny5.day_off == "Monday"
     # assert
-    assert @robot.workday?("Monday")
+    assert johnny5.workday?("Monday")
   end
 
   def test_workday_not_day_off_returns_false
     # arrange
-    @robot = Robot.new
+    k2so = Robot.new
     # act
-    @robot.day_off == 2 # indicating Monday (day 2/7)
+    k2so.day_off == 2 # indicating Monday (day 2/7)
     # assert
-    assert @robot.workday?(2)
+    assert k2so.workday?(2)
   end
 
 end
