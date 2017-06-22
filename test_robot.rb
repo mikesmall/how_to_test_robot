@@ -43,33 +43,30 @@ class TestRobot < MiniTest::Test
 
   def test_that_robot_in_good_condition_sent_to_station_4
     # arrange
-    bb8 = Robot.new
-    bb8.needs_repairs = false
+    ed209 = Robot.new
+    ed209.needs_repairs = false
     # act
-    send_to_station = bb8.station
+    send_to_station = ed209.station
     # assert
     assert_equal(send_to_station, 4)
   end
 
   def test_prioritize_tasks_with_empty_todo_list_returns_negative_one
-    skip
     # arrange
-
+    evil_robot_bill = Robot.new
     # act
-
+    evil_robot_bill.todos = []
     # assert
+    assert_equal -1, evil_robot_bill.prioritize_tasks
   end
 
   def test_prioritize_tasks_with_todos_returns_max_todo_value
-    skip
     # arrange
-
+    evil_robot_tedd = Robot.new
     # act
-
+    evil_robot_tedd.todos = [2,3,1]
     # assert
-
-    #   return todos.max
-    # end
+    assert evil_robot_tedd.prioritize_tasks == 3
   end
 
   def test_workday_on_day_off_returns_true
