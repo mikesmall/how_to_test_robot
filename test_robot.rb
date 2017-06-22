@@ -21,12 +21,14 @@ class TestRobot < MiniTest::Test
   end
 
   def test_that_vintage_robot_needing_repairs_sent_to_station_2
-    skip
     # arrange
-
+    @robot = Robot.new
+    @robot.needs_repairs = true
+    @robot.vintage_model = true
     # act
-
+    send_to_station = @robot.station
     # assert
+    assert_equal(send_to_station, 2)
   end
 
   def test_that_standard_robot_needing_repairs_sent_to_station_3
