@@ -68,7 +68,7 @@ class TestRobot < MiniTest::Test
 
   def test_workday_on_day_off_returns_true
     # arrange
-    @robot = Robot.net
+    @robot = Robot.new
     # act
     @robot.day_off = "Monday"
     # assert
@@ -77,7 +77,7 @@ class TestRobot < MiniTest::Test
 
   def test_workday_not_day_off_returns_false
     # arrange
-    @robot = Robot.net
+    @robot = Robot.new
     # act
     @robot.day_off = 2 # indicating Monday (day 2/7)
     # assert
